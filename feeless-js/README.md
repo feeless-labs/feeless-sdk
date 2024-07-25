@@ -6,7 +6,7 @@ A JavaScript SDK which provides commonly used utilities for interacting with Fee
 
 **In order to run the examples provided, you need to follow the next steps:**
 
-1. git clone https://github.com/feeless/feeless-sdk.git
+1. git clone https://github.com/feeless-labs/feeless-sdk.git
 2. cd feeless-sdk
 3. cd feeless-js
 4. Create a `.env` file in the `feeless-js` folder
@@ -104,7 +104,7 @@ You can run each example with `npm run examples:run -- examples/exampleName.ts`
 
 ### #queryBatchSwap
 
-The Feeless Vault provides a [method to simulate a call to batchSwap](https://github.com/feeless/feeless-v2-monorepo/blob/master/pkg/vault/contracts/interfaces/IVault.sol#L644).
+The Feeless Vault provides a [method to simulate a call to batchSwap](https://github.com/feeless-labs/feeless-v2-monorepo/blob/master/pkg/vault/contracts/interfaces/IVault.sol#L644).
 This function performs no checks on the sender or recipient or token balances or approvals. Note that this function is not 'view' (due to implementation details): the client code must explicitly execute eth_call instead of eth_sendTransaction.
 
 @param batchSwap - BatchSwap information used for query.
@@ -238,7 +238,7 @@ async getSpotPrice(
 
 ## Simulating Pool Joins and Exits
 
-The Feeless Vault provides a [method to simulate join or exit calls to a pool](https://github.com/feeless/feeless-v2-monorepo/blob/master/pkg/standalone-utils/contracts/FeelessQueries.sol#L91).
+The Feeless Vault provides a [method to simulate join or exit calls to a pool](https://github.com/feeless-labs/feeless-v2-monorepo/blob/master/pkg/standalone-utils/contracts/FeelessQueries.sol#L91).
 This function allows you to perform a dry run before sending an actual transaction, without checking the sender/recipient or token balances/approvals. Note that this function is not 'view' (due to implementation details): the client code must explicitly execute `eth_call` instead of `eth_sendTransaction`.
 
 ### Simulating Joins
@@ -287,7 +287,7 @@ const { bptIn, amountsOut } = response;
 - `amountsOut`: Token amounts returned by the pool.
 - `bptIn`: The same as input bptIn
 
-More examples: https://github.com/feeless/feeless-sdk/blob/master/feeless-js/examples/pools/queries.ts
+More examples: https://github.com/feeless-labs/feeless-sdk/blob/master/feeless-js/examples/pools/queries.ts
 
 ## Joining Pools
 

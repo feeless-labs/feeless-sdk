@@ -1,6 +1,6 @@
 Feeless SDK
 
-Feeless is a fork of the Balancer protocol, a community-driven project that acts as an automated portfolio manager, liquidity provider, and price sensor. It is designed for decentralized exchange and automated portfolio management of tokens on the Ethereum blockchain and other EVM compatible systems.
+Feeless is a fork of the Balancer protocol, a community-driven project that acts as an automated portfolio manager, liquidity provider, and price sensor. It is designed for decentralized exchange and automated portfolio management of tokens on the IOTA EVM, SHIMMER EVM and other EVM compatible systems.
 
 This SDK provides developers with methods and examples for formatting data and executing transactions on the Feeless Protocol.
 
