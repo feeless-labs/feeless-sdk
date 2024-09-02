@@ -4,7 +4,7 @@
  * Run command:
  * yarn example ./examples/pools/create/create-weighted-pool.ts
  */
-import { BalancerSDK, Network, PoolType } from '@balancer-labs/sdk';
+import { BalancerSDK, Network, PoolType } from '@feeless/sdk';
 import { reset, setTokenBalance, approveToken } from 'examples/helpers';
 import { AddressZero } from '@ethersproject/constants';
 import { parseFixed } from '@ethersproject/bignumber';

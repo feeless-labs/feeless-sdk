@@ -4,7 +4,7 @@
  * Run with:
  * yarn example ./examples/pools/rewards/claim-vebal-rewards.ts
  */
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@feeless/sdk';
 import { reset } from 'examples/helpers';
 
 const userAddress = '0x549c660ce2B988F588769d6AD87BE801695b2be3';

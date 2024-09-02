@@ -4,8 +4,7 @@
  * How to run:
  * yarn example examples/data/fee-distributor.ts
  */
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
-
+import { BalancerSDK, Network } from '@feeless/sdk';
 const sdk = new BalancerSDK({
   network: Network.MAINNET,
   rpcUrl: 'https://rpc.ankr.com/eth',

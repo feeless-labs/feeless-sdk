@@ -4,7 +4,7 @@
  * Run command:
  * yarn example ./examples/pools/create/create-composable-stable-pool.ts
  */
-import { BalancerSDK, Network, PoolType } from '@balancer-labs/sdk';
+import { BalancerSDK, Network, PoolType } from '@feeless/sdk';
 import { parseFixed } from '@ethersproject/bignumber';
 import { reset, setTokenBalance, approveToken } from 'examples/helpers';
 

@@ -1,13 +1,13 @@
 {
   "name": "@feeless/sdk",
-  "version": "1.1.6-beta.24.1",
+  "version": "1.1.6-beta.24.3-no-api",
   "description": "JavaScript SDK for interacting with the Feeless AMM",
   "license": "GPL-3.0-only",
   "homepage": "https://github.com/feeless-labs/feeless-sdk#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/feeless-labs/feeless-sdk",
-    "directory": "balancer-js"
+    "directory": "feeless-js"
   },
   "bugs": {
     "url": "https://github.com/feeless-labs/feeless-sdk/issues"
@@ -23,19 +23,16 @@
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -c -w",
     "test": "ts-mocha --paths --recursive -p tsconfig.testing.json 'src/**/*.spec.ts' --timeout 20000",
+    "feeless-test": "ts-mocha --paths --recursive -p tsconfig.testing.json 'examples/*.spec.ts' --timeout 20000",
     "test:only": "ts-mocha --paths --recursive -p tsconfig.testing.json --timeout 20000",
     "lint": "eslint ./src --ext .ts --max-warnings 0",
     "lint:fix": "eslint ./src --ext .ts --max-warnings 0 --fix",
     "subgraph:generate": "graphql-codegen --config src/modules/subgraph/codegen.yml -r dotenv/config",
-    "example": "npx ts-node -P tsconfig.examples.json -r tsconfig-paths/register",
+    "example": "npx  ts-node --transpile-only -P tsconfig.examples.json -r tsconfig-paths/register",
     "node": "npx hardhat node --tsconfig tsconfig.testing.json --fork $(. ./.env && echo $ALCHEMY_URL)",
-    "node:goerli": "npx hardhat --tsconfig tsconfig.testing.json --config hardhat.config.goerli.ts node --fork $(. ./.env && echo $ALCHEMY_URL_GOERLI) --port 8000",
-    "node:polygon": "npx hardhat --tsconfig tsconfig.testing.json --config hardhat.config.polygon.ts node --fork $(. ./.env && echo $ALCHEMY_URL_POLYGON) --port 8137",
-    "node:arbitrum": "npx hardhat --tsconfig tsconfig.testing.json --config hardhat.config.arbitrum.ts node --fork $(. ./.env && echo $ALCHEMY_URL_ARBITRUM) --port 8161",
-    "node:gnosis": "npx hardhat --tsconfig tsconfig.testing.json --config hardhat.config.gnosis.ts node --fork $(. ./.env && echo $RPC_URL_GNOSIS) --port 8100",
-    "node:zkevm": "npx hardhat --tsconfig tsconfig.testing.json --config hardhat.config.zkevm.ts node --fork $(. ./.env && echo $ALCHEMY_URL_ZKEVM) --port 8101",
-    "node:avalanche": "npx hardhat --tsconfig tsconfig.testing.json --config hardhat.config.avalanche.ts node --fork $(. ./.env && echo $RPC_URL_AVALANCHE) --port 8114",
-    "typechain:generate": "npx typechain --target ethers-v5 --out-dir src/contracts './src/lib/abi/*.json'"
+    "typechain:generate": "npx typechain --target ethers-v5 --out-dir src/contracts './src/lib/abi/*.json'",
+    "test:list-pools": "ts-node examples/listPools.ts",
+    "test:pool-subgraph": "ts-node examples/data/pool-subgraph.ts"
   },
   "devDependencies": {
     "@ethersproject/solidity": "^5.6.1",
@@ -80,7 +77,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "tiny-invariant": "^1.1.0",
     "ts-mocha": "^9.0.2",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "tsconfig-paths": "^3.14.1",
     "typechain": "^8.1.1",
     "typescript": "^4.0.2"
@@ -96,6 +93,7 @@
     "@ethersproject/constants": "^5.4.0",
     "@ethersproject/contracts": "^5.4.0",
     "@ethersproject/providers": "^5.4.5",
+    "@feeless/sdk": "^1.1.6-beta.24.3-no-api",
     "axios": "^0.24.0",
     "ethers": "^5",
     "graphql": "^15.6.1",

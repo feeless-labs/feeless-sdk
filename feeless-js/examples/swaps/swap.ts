@@ -4,7 +4,7 @@
  * How to run:
  * yarn example examples/swaps/swap.ts
  */
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@feeless/sdk';
 import { formatFixed } from '@ethersproject/bignumber';
 import { AddressZero } from '@ethersproject/constants';
 import { reset } from 'examples/helpers/forked-utils';

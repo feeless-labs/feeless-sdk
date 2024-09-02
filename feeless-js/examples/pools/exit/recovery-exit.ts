@@ -10,7 +10,7 @@ import {
   removeItem,
   Network,
   truncateAddresses,
-} from '@balancer-labs/sdk';
+}  from '@feeless/sdk';
 import { parseEther } from '@ethersproject/units';
 import { getTokenBalance, reset, setTokenBalance } from 'examples/helpers';
 

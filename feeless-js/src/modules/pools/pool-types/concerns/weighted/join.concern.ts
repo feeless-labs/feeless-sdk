@@ -1,7 +1,6 @@
 import { WeightedMaths } from '@balancer-labs/sor';
 import { BigNumber } from '@ethersproject/bignumber';
 import { AddressZero } from '@ethersproject/constants';
-
 import { BalancerError, BalancerErrorCode } from '@/balancerErrors';
 import { Vault__factory } from '@/contracts/factories/Vault__factory';
 import { balancerVault } from '@/lib/constants/config';
@@ -10,6 +9,7 @@ import { subSlippage } from '@/lib/utils/slippageHelper';
 import { _upscaleArray } from '@/lib/utils/solidityMaths';
 import { WeightedPoolEncoder } from '@/pool-weighted';
 import { Address, Pool } from '@/types';
+const { ethers } = require('ethers');
 import {
   JoinConcern,
   JoinPool,
@@ -29,6 +29,7 @@ type SortedValues = {
 };
 
 export class WeightedPoolJoin implements JoinConcern {
+
   buildJoin = ({
     joiner,
     pool,
@@ -45,7 +46,6 @@ export class WeightedPoolJoin implements JoinConcern {
       tokensIn,
       amountsIn,
     });
-
     const { expectedBPTOut, minBPTOut } = this.calcBptOutGivenExactTokensIn({
       ...sortedValues,
       slippage,
@@ -124,6 +124,10 @@ export class WeightedPoolJoin implements JoinConcern {
       sortedAmountsIn.map(BigInt),
       parsedPoolInfo.scalingFactors
     );
+
+    console.log('Scaling Factors:', parsedPoolInfo.scalingFactors);
+    console.log('UpScaled Amounts:', upScaledAmountsIn);
+    console.log('Sorted Amounts In:', sortedAmountsIn);
     // sort pool info
     return {
       ...parsedPoolInfo,
@@ -148,6 +152,18 @@ export class WeightedPoolJoin implements JoinConcern {
       | 'totalSharesEvm'
       | 'swapFeeEvm'
     >): { expectedBPTOut: string; minBPTOut: string } => {
+
+      console.log('UpScaled Balances:', upScaledBalances);
+
+      if (weights.some(weight => weight === 0n)) {
+        throw new Error('One of the weights is zero, cannot proceed.');
+    }
+    
+      if (upScaledBalances.some(balance => balance == 0n)) {
+        throw new Error('One of the upscaled balances is zero, cannot proceed.');
+    }
+    
+
     const expectedBPTOut = WeightedMaths._calcBptOutGivenExactTokensIn(
       upScaledBalances,
       weights,

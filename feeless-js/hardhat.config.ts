@@ -6,7 +6,7 @@ import '@nomiclabs/hardhat-ethers';
 export default {
   networks: {
     hardhat: {
-      chainId: 1,
+      chainId: 1075,
     },
   },
 };

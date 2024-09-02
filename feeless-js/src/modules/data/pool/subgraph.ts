@@ -27,7 +27,7 @@ interface PoolsSubgraphRepositoryOptions {
 /**
  * Access pools using generated subgraph client.
  *
- * Balancer's subgraph URL: https://thegraph.com/hosted-service/subgraph/balancer-labs/balancer-v2
+ * Feeless's subgraph URL: https://subgraph.feeless.finance/subgraph/balancer-labs/balancer-v2
  */
 export class PoolsSubgraphRepository
   implements Findable<Pool, PoolAttribute>, Searchable<Pool>
@@ -56,7 +56,7 @@ export class PoolsSubgraphRepository
       orderDirection: OrderDirection.Desc,
       where: {
         totalShares: {
-          gt: 0.000000000001,
+          gt: -1,
         },
       },
     };
@@ -87,9 +87,12 @@ export class PoolsSubgraphRepository
       new SubgraphArgsFormatter()
     ) as PoolsQueryVariables;
 
+    
     const { pool0, pool1000, pool2000 } = await this.client.AllPools(
       formattedQuery
     );
+
+    
     logger.timeEnd('fetching pools');
 
     return [...pool0, ...pool1000, ...pool2000].map((pool) =>

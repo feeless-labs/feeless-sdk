@@ -9,7 +9,7 @@ import { JsonRpcProvider } from '@ethersproject/providers';
 export const reset = (
   provider: JsonRpcProvider,
   blockNumber?: number,
-  jsonRpcUrl = 'https://rpc.ankr.com/eth'
+  jsonRpcUrl = 'https://json-rpc.evm.testnet.iotaledger.net'
 ): Promise<void> =>
   provider.send('hardhat_reset', [
     {

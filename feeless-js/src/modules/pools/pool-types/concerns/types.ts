@@ -1,5 +1,5 @@
 /* eslint @typescript-eslint/no-explicit-any: ["error", { "ignoreRestArgs": true }] */
-import { ExitPoolRequest, JoinPoolRequest, Pool } from '@/types';
+import { ExitPoolRequest, Pool, JoinPoolRequest } from '@/types';
 import { BigNumber } from '@ethersproject/bignumber';
 
 export interface LiquidityConcern {
@@ -43,6 +43,7 @@ export interface PriceImpactConcern {
 }
 
 export interface JoinConcern {
+
   /**
    * Build join pool transaction parameters with exact tokens in and minimum BPT out based on slippage tolerance
    * @param joiner Account address joining pool

@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Example Script",
+        "runtimeExecutable": "/home/roger/.nvm/versions/node/v20.0.0/bin/node",
+      "runtimeArgs": [
+        "/home/roger/.nvm/versions/node/v20.0.0/bin/npx",
+        "ts-node",
+        "--inspect-brk",
+        "-P",
+        "tsconfig.examples.json",
+        "-r",
+        "tsconfig-paths/register"
+      ],
+      "env": {
+        "NODE_PATH": "${workspaceFolder}/feeless-js/dist/node_modules"
+      },
+      "args": ["${file}"],
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/feeless-js/dist/**/*.js"],
+      "console": "integratedTerminal"
+    }
+  ]
+}

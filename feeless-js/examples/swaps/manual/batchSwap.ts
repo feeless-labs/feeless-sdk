@@ -6,7 +6,7 @@
  * yarn example ./examples/swaps/manual/batchSwap.ts
  */
 
-import { BalancerSDK, Network, SwapType, Swaps } from '@balancer-labs/sdk';
+import { BalancerSDK, Network, SwapType, Swaps } from '@feeless/sdk';
 import { AddressZero } from '@ethersproject/constants';
 import { formatUnits, parseEther } from '@ethersproject/units';
 

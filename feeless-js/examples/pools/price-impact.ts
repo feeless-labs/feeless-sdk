@@ -9,7 +9,7 @@ import {
   Network,
   BalancerErrorCode,
   BalancerError,
-} from '@balancer-labs/sdk';
+} from '@feeless/sdk';
 
 async function getPriceImpact() {
   const network = Network.MAINNET;

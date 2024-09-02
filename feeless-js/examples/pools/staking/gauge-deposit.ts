@@ -8,7 +8,7 @@
  * How to run:
  * yarn example examples/pools/staking/gauge-deposit.ts
  */
-import { BalancerSDK } from '@balancer-labs/sdk';
+import { BalancerSDK } from '@feeless/sdk';
 import { reset, setTokenBalance } from 'examples/helpers';
 
 const poolAddress = '0x32296969ef14eb0c6d29669c550d4a0449130230';

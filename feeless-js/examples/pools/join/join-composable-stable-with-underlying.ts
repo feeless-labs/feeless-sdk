@@ -32,7 +32,7 @@
  * Run with:
  * yarn example ./examples/pools/join/join-composable-stable-with-underlying.ts
  */
-import { BalancerSDK, Relayer, SimulationType } from '@balancer-labs/sdk';
+import { BalancerSDK, Relayer, SimulationType } from '@feeless/sdk';
 import { parseEther } from '@ethersproject/units';
 import {
   approveToken,

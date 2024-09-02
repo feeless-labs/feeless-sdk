@@ -21,7 +21,7 @@ import {
   removeItem,
   Relayer,
   SimulationType,
-} from '@balancer-labs/sdk';
+} from '@feeless/sdk';
 import { parseEther } from '@ethersproject/units';
 import { formatFixed } from '@ethersproject/bignumber';
 import { getTokenBalance, reset, setTokenBalance } from 'examples/helpers';

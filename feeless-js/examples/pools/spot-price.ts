@@ -11,7 +11,7 @@ import {
   BalancerSdkConfig,
   BalancerError,
   BalancerErrorCode,
-} from '@balancer-labs/sdk';
+} from '@feeless/sdk';
 
 const config: BalancerSdkConfig = {
   network: Network.MAINNET,

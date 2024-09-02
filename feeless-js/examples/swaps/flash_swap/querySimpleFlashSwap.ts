@@ -11,7 +11,7 @@
  * yarn example ./examples/swaps/flash_swap/querySimpleFlashSwap.ts
  */
 
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@feeless/sdk';
 
 const balancer = new BalancerSDK({
   network: Network.MAINNET,

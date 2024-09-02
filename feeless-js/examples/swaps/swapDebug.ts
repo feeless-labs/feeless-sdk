@@ -6,7 +6,7 @@
  */
 import { ADDRESSES } from '@/test/lib/constants';
 import { FORK_NODES, RPC_URLS, forkSetup } from '@/test/lib/utils';
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@feeless/sdk';
 import { formatFixed } from '@ethersproject/bignumber';
 
 const network = Network.MAINNET;

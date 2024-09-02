@@ -213,8 +213,8 @@ Find Spot Price for pair in specific pool.
 const feeless = new FeelessSDK(sdkConfig);
 const pool = await feeless.pools.find(poolId);
 const spotPrice = await pool.calcSpotPrice(
-  ADDRESSES[network].DAI.address,
-  ADDRESSES[network].BAL.address
+  ADDRESSES[network].wDAI.address,
+  ADDRESSES[network].wFLS.address
 );
 
 ### #getSpotPrice

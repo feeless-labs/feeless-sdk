@@ -4,7 +4,7 @@
  * How to run:
  * yarn run example examples/contracts/veBAL-proxy.ts
  */
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@feeless/sdk';
 
 const sdk = new BalancerSDK({
   network: Network.MAINNET,

@@ -4,7 +4,7 @@
  * Run with:
  * yarn example ./examples/data/liquidity-gauges.ts
  */
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@feeless/sdk';
 
 const sdk = new BalancerSDK({
   network: Network.MAINNET,

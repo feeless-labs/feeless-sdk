@@ -63,6 +63,8 @@ export class BalancerSDK implements BalancerSDKRoot {
       config.coingecko
     );
 
+    this.data.pools
+
     this.swaps = new Swaps(this.config);
     this.relayer = new Relayer();
     this.pricing = new Pricing(config, this.swaps);

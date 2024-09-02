@@ -1,7 +1,7 @@
 /**
  * Example showing how to find a swap for a pair and use queryBatchSwap to simulate result on the Vault.
  */
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@feeless/sdk';
 import { parseFixed } from '@ethersproject/bignumber';
 
 const balancer = new BalancerSDK({

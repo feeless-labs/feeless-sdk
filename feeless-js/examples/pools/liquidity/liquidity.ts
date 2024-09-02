@@ -4,10 +4,10 @@
  * Run this example:
  * yarn example ./examples/pools/liquidity/liquidity.ts
  */
-import { BalancerSDK } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@feeless/sdk';
 
 const sdk = new BalancerSDK({
-  network: 1,
+  network: Network.MAINNET,
   rpcUrl: 'https://rpc.ankr.com/eth',
 });
 

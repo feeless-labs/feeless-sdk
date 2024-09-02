@@ -9,7 +9,7 @@ import {
   BalancerError,
   BalancerErrorCode,
   BalancerSDK,
-} from '@balancer-labs/sdk';
+} from '@feeless/sdk';
 
 const sdk = new BalancerSDK({
   network: 1,

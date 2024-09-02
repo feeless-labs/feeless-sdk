@@ -5,7 +5,7 @@
  * yarn example ./examples/pools/queries.ts
  */
 
-import { BalancerSDK, PoolWithMethods } from '@balancer-labs/sdk';
+import { BalancerSDK, PoolWithMethods } from '@feeless/sdk';
 import { parseEther, formatEther } from '@ethersproject/units';
 import { BigNumber } from '@ethersproject/bignumber';
 

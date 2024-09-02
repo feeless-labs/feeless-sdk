@@ -23,7 +23,6 @@ export interface BalancerSdkSorConfig {
   //default to true.
   fetchOnChainBalances: boolean;
 }
-
 export const BALANCER_NETWORK_CONFIG: Record<Network, BalancerNetworkConfig> = {
   [Network.MAINNET]: {
     chainId: Network.MAINNET, //1075
@@ -33,7 +32,7 @@ export const BALANCER_NETWORK_CONFIG: Record<Network, BalancerNetworkConfig> = {
         wFLS: '0x1D148Eb4C213e560a6bad71536b96AC5D6F1cDE3',
         wrappedNativeAsset: '0xB2E0DfC4820cc55829C71529598530E177968613',
         lbpRaisingTokens: [
-          '0xCa2DBF6Ba5f3252Fd758C113A8c48D6D77406CaC', // DAI
+          '0x68EA743120BaCf2C277910700116Eb4b1C0643AA', // DAI
           '0xc4FA42632fea08274ACDB5c0d9331285C01717Ba', // USDC
           '0xCa2DBF6Ba5f3252Fd758C113A8c48D6D77406CaC', // USDT
         ],
@@ -46,19 +45,19 @@ export const BALANCER_NETWORK_CONFIG: Record<Network, BalancerNetworkConfig> = {
       },
       contracts: {
         multicall: "0x149450A58AF0b489B13B984D4486BefFA6545C0B",
-        vault: "0x2C8dFD4b93aD661d569D3262E537E8Daf040260f",
+        vault: balancerVault,
         poolDataQueries: "",
         gaugeClaimHelper: "",
         balancerHelpers: "0x70213c0F6e0f358C32c63ea902048c278e9632Bb",
-        balancerMinter: "0x654Fa7B23b19B384E39606A5760077fE44Fa48B3",
+        balancerMinter: "0x633fbB5D48D7f6602Faa9c90A4E5950bE278FB5e",
         balancerRelayer: "",
-        gaugeController: "0x7E3Ae4148a021e7597f7D2A2f87aB5E3177E82D1",
-        feeDistributor: "0xd9c6dd6B6ab7A88650102a6F0E4fe997FEf0e3f3",
-        veFls: "",
+        gaugeController: "0x73AA78FFc3eB8E651618Ca1f323FAb3484094979",
+        feeDistributor: "0xdf644138E7bbBf281c5C511DBc5de1B393eaD9C3",
+        veFls: "0xB62fe3ed61fa7BA0fc8B8917bd926E1f6EE3eC37",
         veFlsProxy: "",
         protocolFeePercentagesProvider: "0x101a83d167a907ae8Ea8EFaC48B2B8269FACB4EF",
         weightedPoolFactory: "0x14C4F1e47793e60b25083bc7d3a88B08cF7774E3",
-        composableStablePoolFactory: "0x880843314b08750963120A1A92028729b17bEa9f",
+        composableStablePoolFactory: "0x880843314b08750963120A1A92028729b17bEa9f", 
         managedPoolFactory: "0x88d87fdA64837aB6323f48ce898a0648dc29789f",
         authorizer: "0x2C8dFD4b93aD661d569D3262E537E8Daf040260f",
         authorizerAdaptor: "0x820cFb05755D3316556Ef4F1049CF07e0b102DcC",
@@ -72,7 +71,7 @@ export const BALANCER_NETWORK_CONFIG: Record<Network, BalancerNetworkConfig> = {
         protocolFeesCollector: "0xD1434b84FF32e50CF816b1f67c53648F6df9E2F8",
         protocolFeesWithdrawer: "0x9fe5997cfB84957b7Ff2c330E826959609D98357",
         queryProcessor: "0x6783995f91A3D7f7C24B523669488F96cCa88d31",
-        votingEscrowDelegationProxy: "0xCbE2d6510ff1E16E658FABF68C3Da80C31A79cf1",
+        votingEscrowDelegationProxy: "0x171fe8eF7D394b18074a3D5f3E6BF11815839351",
         weightedPool2TokensFactory: "0xCF0a32Bbef8F064969F21f7e02328FB577382018",
         doubleEntrypointFixRelayer: "0x9f39b47FB71525762dBDBb271B8c200dd9Bc230f",
         l2BalancerPseudoMinter: "0xD3e63cA183a7F207869186501ec880A15db9043c",
@@ -82,17 +81,17 @@ export const BALANCER_NETWORK_CONFIG: Record<Network, BalancerNetworkConfig> = {
         recoveryModeHelper: "0x312Da6594b75b7b733c904715edc47b97776b45E",
         balancerQueries: "0x2d43E17168383299183eA66a530FE378F1537b01",
         protocolIdRegistry: "0xfF527907500eF74988c4513aBBFfF684c741222d",
-        gaugeAdder: "0x71a37747D8B213b7e451104cDa1f92Fbeca6AEf8",
+        gaugeAdder: "0x66Cc14BDAca540D58F7d7805285E9a738df4A45d",
         balancerTokenAdmin: "0x3ABA8015584E22A577Cd112C55219409B68E0753",
-        liquidityGaugeV5: "0x729869F43d1Fc737127d2B4E045aD4b3Ba888eBB",
-        liquidityGaugeFactory: "0xbD250F194338F7237DFE5438Ee58c7F2F8DA092F"
+        liquidityGaugeV5: "0xF37B814eee8C97cb2289d8b0313e434b0098162e",
+        liquidityGaugeFactory: "0xD01214411c772AA4587921C1FB1986C9a4AB6F33"
       }
     },
     urls: {
       subgraph:
-        'http://127.0.0.1:8000/subgraphs/name/balancer-labs/balancer-v2',
+        'https://subgraph.feeless.finance/subgraphs/name/feeless-labs/feeless-v2',
       gaugesSubgraph:
-        'http://127.0.0.1:8000/subgraphs/name/balancer-labs/balancer-gauges',
+        'https://subgraph.feeless.finance/subgraphs/name/feeless-labs/gauges',
     },
     thirdParty: {
       coingecko: {
@@ -106,12 +105,12 @@ export const BALANCER_NETWORK_CONFIG: Record<Network, BalancerNetworkConfig> = {
         address: '0x0c3861100485C118f63e50D615E75daD491e19c2',
       },
       ETHBTC: {
-        id: '0xff8e14b5a4be62434c7759d339a6e7c4a586ab31000200000000000000000004',
-        address: '0xff8E14b5a4be62434c7759d339A6E7C4A586aB31',
+        id: '0x59a324bf288fcf7c2c711549f1178e39869bc99c000200000000000000000016',
+        address: '0x59A324bf288Fcf7C2c711549F1178E39869bC99C',
       },
       FLSDAI: {
-        id: '0x6b2b40c5c0d9d9cd4b82f05e756a4e513faa7e2f000200000000000000000005',
-        address: '0x6b2B40c5C0d9D9Cd4B82f05E756A4e513faA7e2f',
+        id: '0x0228b0c18a585974087e539ca49d9db0c5baf3b600020000000000000000001a',
+        address: '0x0228b0c18a585974087e539ca49D9DB0c5Baf3b6',
       },
       IOTABTC: {
         id: '0x230fbc50a0db76f3f9e85e20907e1fe4e9b387d7000200000000000000000006',
@@ -133,6 +132,8 @@ export const BALANCER_NETWORK_CONFIG: Record<Network, BalancerNetworkConfig> = {
     poolsToIgnore: [
      
     ]
+
+    
   }
 };
 

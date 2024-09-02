@@ -6,6 +6,7 @@ import type {
   ExitExactBPTInAttributes,
   ExitExactTokensOutAttributes,
   JoinPoolAttributes,
+  JoinPoolParameters
 } from './modules/pools/pool-types/concerns/types';
 import type {
   Findable,
@@ -205,6 +206,7 @@ export type JoinPoolRequest = {
   fromInternalBalance: boolean;
 };
 
+
 // Exit
 
 export type ExitPoolRequest = {
@@ -376,6 +378,15 @@ export interface PriceRateProvider {
  * Pool use-cases / controller layer
  */
 export interface PoolWithMethods extends Pool, Queries.ParamsBuilder {
+  joinPool : ({
+    joiner,
+    pool,
+    tokensIn,
+    amountsIn,
+    slippage,
+    wrappedNativeAsset,
+  }: JoinPoolParameters) => JoinPoolRequest
+
   /**
    * Build join pool transaction parameters with exact tokens in and minimum BPT out based on slippage tolerance
    * @param joiner Account address joining pool
@@ -390,6 +401,7 @@ export interface PoolWithMethods extends Pool, Queries.ParamsBuilder {
     amountsIn: string[],
     slippage: string
   ) => JoinPoolAttributes;
+
 
   /**
    * Calculate price impact of bptAmount against zero price impact BPT amount.

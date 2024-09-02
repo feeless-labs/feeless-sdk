@@ -1,4 +1,4 @@
-import { BalancerSDK } from '@balancer-labs/sdk';
+import { BalancerSDK } from '@feeless/sdk';
 
 const sdk = new BalancerSDK({
   network: 1,

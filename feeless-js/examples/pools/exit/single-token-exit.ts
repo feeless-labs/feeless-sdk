@@ -4,7 +4,7 @@
  * Run command:
  * yarn example ./examples/pools/exit/single-token-exit.ts
  */
-import { Network, BalancerSDK } from '@balancer-labs/sdk';
+import { Network, BalancerSDK } from '@feeless/sdk';
 import { reset, setTokenBalance, getTokenBalance } from 'examples/helpers';
 import { parseEther } from '@ethersproject/units';
 
