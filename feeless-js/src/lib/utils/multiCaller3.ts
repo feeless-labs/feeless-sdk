@@ -9,7 +9,7 @@ export class Multicaller3 {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private calls: [string, string, any][] = [];
   private paths: string[] = [];
-  address = '0xcA11bde05977b3631167028862bE2a173976CA11';
+  address = '0x2f98bB4979AD0a3517C0B402D03Be2aeF32cDEdc';
   multicall: Multicall3;
 
   constructor(

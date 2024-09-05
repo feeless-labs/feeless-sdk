@@ -6,7 +6,7 @@
  * Run command:
  * yarn example ./examples/swaps/advanced.ts
  */
-import { FORK_NODES } from '@/test/lib/utils';
+
 import {
   BalancerSDK,
   Network,
@@ -121,23 +121,20 @@ async function getAndProcessSwaps(
 
 async function swapExample() {
   const network = Network.MAINNET;
-  const rpcUrl = FORK_NODES[network];
-  const tokenIn = '0xaf88d065e77c8cC2239327C5EDb3A432268e5831';
-  const tokenOut = '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9';
+  const rpcUrl = "https://json-rpc.evm.testnet.iotaledger.net";
+  const tokenIn = '0x553D8A5927FBA1c3eC05DdA667D6Cda3F5543d3a';
+  const tokenOut = '0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209';
   const swapType = SwapTypes.SwapExactIn;
-  const amount = parseFixed('200000', 6);
+  const amount = parseFixed('0.5', 12);
   // Currently Relayer only suitable for ExactIn and non-eth swaps
   const canUseJoinExitPaths = canUseJoinExit(swapType, tokenIn, tokenOut);
-
   console.log(rpcUrl);
   const balancer = new BalancerSDK({
     network,
     rpcUrl,
+    
   });
-
   const result = await balancer.swaps.sor.fetchPools();
-  console.log(result);
-
   await getAndProcessSwaps(
     balancer,
     tokenIn,
@@ -147,5 +144,4 @@ async function swapExample() {
     canUseJoinExitPaths
   );
 }
-
 swapExample();

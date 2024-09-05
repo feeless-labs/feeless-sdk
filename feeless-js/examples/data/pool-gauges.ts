@@ -2,14 +2,14 @@ import { BalancerSDK, Network } from '@feeless/sdk';
 
 const sdk = new BalancerSDK({
   network: Network.MAINNET,
-  rpcUrl: '',
+  rpcUrl: 'https://iota-testnet-evm.public.blastapi.io',
 });
 const { poolGauges } = sdk.data;
 
 (async function () {
   if (!poolGauges) throw 'Gauge Subgraph must be initialized';
 
-  const POOL_ADDRESS = '0x27c9f71cc31464b906e0006d4fcbc8900f48f15f';
+  const POOL_ADDRESS = '0x0c3861100485C118f63e50D615E75daD491e19c2';
 
   const result = await poolGauges.find(POOL_ADDRESS);
 

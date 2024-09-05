@@ -5,14 +5,14 @@ import { formatUnits } from '@ethersproject/units';
 import { VeDelegationProxy__factory } from '@/contracts';
 import { ContractAddresses } from '@/types';
 
-export class VeBalProxy {
+export class veFLSProxy {
   instance: Contract;
 
   constructor(addresses: ContractAddresses, provider: Provider) {
-    if (!addresses.veBalProxy)
-      throw new Error('veBalProxy address must be defined');
+    if (!addresses.veFlsProxy)
+      throw new Error('veFLSProxy address must be defined');
     this.instance = VeDelegationProxy__factory.connect(
-      addresses.veBalProxy,
+      addresses.veFlsProxy,
       provider
     );
   }

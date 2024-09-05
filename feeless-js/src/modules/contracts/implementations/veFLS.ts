@@ -5,7 +5,7 @@ import { Multicall, VeBal__factory } from '@/contracts';
 import { Multicaller } from '@/lib/utils/multiCaller';
 import { toJsTimestamp } from '@/lib/utils/time';
 
-export type VeBalLockInfo = {
+export type veFLSLockInfo = {
   lockedEndDate: number;
   lockedAmount: string;
   totalSupply: string;
@@ -14,18 +14,18 @@ export type VeBalLockInfo = {
   isExpired: boolean;
 };
 
-type VeBalLockInfoResult = {
+type veFLSLockInfoResult = {
   locked: BigNumber[];
   epoch: BigNumber;
   totalSupply: BigNumber;
 };
 
-export class VeBal {
+export class veFLS {
   constructor(private veBalAddress: string, private multicall: Multicall) {}
 
   public async getLockInfo(
     account: string
-  ): Promise<VeBalLockInfo | undefined> {
+  ): Promise<veFLSLockInfo | undefined> {
     if (!this.veBalAddress) throw new Error('veBal address must be defined');
 
     const multicaller = new Multicaller(this.multicall, [
@@ -36,12 +36,12 @@ export class VeBal {
     multicaller.call('epoch', this.veBalAddress, 'epoch');
     multicaller.call('totalSupply', this.veBalAddress, 'totalSupply()');
 
-    const result = <VeBalLockInfoResult>await multicaller.execute();
+    const result = <veFLSLockInfoResult>await multicaller.execute();
 
     return this.formatLockInfo(result);
   }
 
-  public formatLockInfo(lockInfo: VeBalLockInfoResult): VeBalLockInfo {
+  public formatLockInfo(lockInfo: veFLSLockInfoResult): veFLSLockInfo {
     const [lockedAmount, lockedEndDate] = lockInfo.locked;
 
     const hasExistingLock = lockedAmount.gt(0);

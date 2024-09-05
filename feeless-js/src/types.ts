@@ -78,7 +78,7 @@ export interface ContractAddresses {
   balancerRelayer: string;
   gaugeController?: string;
   feeDistributor?: string;
-  veFls?: string;
+  veFLS?: string;
   veFlsProxy?: string;
   protocolFeePercentagesProvider?: string;
   weightedPoolFactory?: string;
@@ -378,14 +378,7 @@ export interface PriceRateProvider {
  * Pool use-cases / controller layer
  */
 export interface PoolWithMethods extends Pool, Queries.ParamsBuilder {
-  joinPool : ({
-    joiner,
-    pool,
-    tokensIn,
-    amountsIn,
-    slippage,
-    wrappedNativeAsset,
-  }: JoinPoolParameters) => JoinPoolRequest
+
 
   /**
    * Build join pool transaction parameters with exact tokens in and minimum BPT out based on slippage tolerance

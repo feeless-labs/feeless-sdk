@@ -6,16 +6,15 @@
  */
 import { BalancerSDK, Network } from '@feeless/sdk';
 import { formatFixed } from '@ethersproject/bignumber';
-import { AddressZero } from '@ethersproject/constants';
-import { reset } from 'examples/helpers/forked-utils';
 
-const tokenIn = AddressZero; // eth
-const tokenOut = '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'; // wBTC
-const amount = String(BigInt(100e18)); // 100 eth
+const tokenIn = "0x553D8A5927FBA1c3eC05DdA667D6Cda3F5543d3a"; // wBTC
+const tokenOut = '0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209'; // wETH
+
+const amount = String(BigInt(1e12)); // 1 wBTC
 
 const sdk = new BalancerSDK({
   network: Network.MAINNET,
-  rpcUrl: `http://127.0.0.1:8545`, // Uses a local fork for simulating transaction sending.
+  rpcUrl: `https://json-rpc.evm.testnet.iotaledger.net`, // Uses a local fork for simulating transaction sending.
 });
 
 const { swaps } = sdk;
@@ -23,7 +22,7 @@ const { swaps } = sdk;
 const erc20Out = sdk.contracts.ERC20(tokenOut, sdk.provider);
 
 async function swap() {
-  await reset(sdk.provider);
+
 
   const signer = sdk.provider.getSigner();
   const account = await signer.getAddress();

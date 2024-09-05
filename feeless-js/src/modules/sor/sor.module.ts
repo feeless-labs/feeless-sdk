@@ -22,6 +22,7 @@ export class Sor extends SOR {
     const network = getNetworkConfig(sdkConfig);
     const sorConfig = Sor.getSorConfig(sdkConfig);
     const sorNetworkConfig = Sor.getSorNetworkConfig(network);
+
     const provider = new JsonRpcProvider(
       sdkConfig.rpcUrl,
       sdkConfig.network as number
@@ -47,7 +48,7 @@ export class Sor extends SOR {
 
   private static getSorConfig(config: BalancerSdkConfig): BalancerSdkSorConfig {
     return {
-      tokenPriceService: 'api',
+      tokenPriceService: 'subgraph',
       poolDataService: 'subgraph',
       fetchOnChainBalances: true,
       ...config.sor,
@@ -78,6 +79,7 @@ export class Sor extends SOR {
       ...(network.poolsToIgnore ?? []),
       ...POOLS_TO_IGNORE,
     ];
+
     return typeof sorConfig.poolDataService === 'object'
       ? sorConfig.poolDataService
       : new SubgraphPoolDataService(

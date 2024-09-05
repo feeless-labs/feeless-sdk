@@ -2,8 +2,8 @@ import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 import { Signer } from '@ethersproject/abstract-signer';
 import { BasePool } from './implementations/base-pool';
-import { VeBal } from './implementations/veBAL';
-import { VeBalProxy } from './implementations/veBAL-proxy';
+import { veFLS } from './implementations/veFLS';
+import { veFLSProxy } from './implementations/veFLS-proxy';
 import {
   AaveLinearPoolFactory,
   AaveLinearPoolFactory__factory,
@@ -58,8 +58,8 @@ export interface ContractInstances {
   multicall: Multicall;
   relayer: Contract;
   vault: Vault;
-  veBal?: VeBal;
-  veBalProxy?: VeBalProxy;
+  veFLS?: veFLS;
+  veFLSProxy?: veFLSProxy;
   weightedPoolFactory?: WeightedPoolFactory;
   yearnLinearPoolFactory?: YearnLinearPoolFactory;
 }
@@ -108,13 +108,13 @@ export class Contracts {
       this.contractAddresses.balancerRelayer,
       provider
     );
-    let veBal: undefined | VeBal;
-    if (this.contractAddresses.veBal) {
-      veBal = new VeBal(this.contractAddresses.veBal, multicall);
+    let veFls: undefined | veFLS;
+    if (this.contractAddresses.veFLS) {
+      veFls = new veFLS(this.contractAddresses.veFLS, multicall);
     }
-    let veBalProxy: undefined | VeBalProxy;
-    if (this.contractAddresses.veBalProxy) {
-      veBalProxy = new VeBalProxy(this.contractAddresses, provider);
+    let veFlsProxy: undefined | veFLSProxy;
+    if (this.contractAddresses.veFlsProxy) {
+      veFlsProxy = new veFLSProxy(this.contractAddresses, provider);
     }
     let gaugeClaimHelper: undefined | GaugeClaimHelper;
     if (this.contractAddresses.gaugeClaimHelper)
@@ -187,8 +187,8 @@ export class Contracts {
       lidoRelayer,
       multicall,
       relayer,
-      veBal,
-      veBalProxy,
+      veFLS : veFls,
+      veFLSProxy : veFlsProxy,
       weightedPoolFactory,
       yearnLinearPoolFactory,
       vault,

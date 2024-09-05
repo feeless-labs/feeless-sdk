@@ -195,6 +195,7 @@ export const fetchOnChainPoolData = async (
     return {};
   }
 
+
   const multicaller = new Multicaller3(abi, provider);
 
   pools.forEach(({ id, address, poolType, poolTypeVersion }) => {
