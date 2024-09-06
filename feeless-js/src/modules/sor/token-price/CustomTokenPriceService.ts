@@ -1,9 +1,9 @@
 import { TokenPriceService } from '@balancer-labs/sor';
 
-export class CustomPriceProvider implements TokenPriceService {
-  private tokenPrices: Map<string, number>;
-
-  constructor(tokenPrices: Map<string, number>) {
+export class CustomTokenPriceProvider implements TokenPriceService {
+  private tokenPrices: Map<string, bigint>;
+  
+  constructor(tokenPrices: Map<string, bigint>) {
     this.tokenPrices = tokenPrices;
   }
 
@@ -22,8 +22,11 @@ export class CustomPriceProvider implements TokenPriceService {
       throw new Error('Native Token Price not found in the provided map');
     }
 
-    const tokenPriceInNativeAsset = tokenPrice / nativeAssetPrice;
-    return String(tokenPriceInNativeAsset);
+    // Multiply by scaling factor to simulate decimals, then divide
+    const tokenPriceInNativeAsset = (tokenPrice ) / nativeAssetPrice;
+
+    // Convert the result to a floating-point string with 18 decimals
+    return tokenPriceInNativeAsset.toString;
   }
 }
 

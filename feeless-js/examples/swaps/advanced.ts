@@ -129,11 +129,15 @@ async function swapExample() {
   // Currently Relayer only suitable for ExactIn and non-eth swaps
   const canUseJoinExitPaths = canUseJoinExit(swapType, tokenIn, tokenOut);
   console.log(rpcUrl);
+
+
   const balancer = new BalancerSDK({
     network,
     rpcUrl,
     
+    
   });
+  
   const result = await balancer.swaps.sor.fetchPools();
   await getAndProcessSwaps(
     balancer,
