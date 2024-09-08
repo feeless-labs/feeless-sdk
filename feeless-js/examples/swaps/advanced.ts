@@ -27,6 +27,10 @@ async function getAndProcessSwaps(
   amount: BigNumber,
   useJoinExitPaths: boolean
 ) {
+
+  console.log(tokenIn);
+  console.log(tokenOut);
+
   const swapInfo = await balancer.swaps.sor.getSwaps(
     tokenIn,
     tokenOut,
@@ -37,6 +41,8 @@ async function getAndProcessSwaps(
   );
 
   console.log(balancer.swaps.sor.getPools().length);
+
+  console.log(JSON.stringify(swapInfo));
 
   if (swapInfo.returnAmount.isZero()) {
     console.log('No Swap');
@@ -122,8 +128,8 @@ async function getAndProcessSwaps(
 async function swapExample() {
   const network = Network.MAINNET;
   const rpcUrl = "https://json-rpc.evm.testnet.iotaledger.net";
-  const tokenIn = '0x553D8A5927FBA1c3eC05DdA667D6Cda3F5543d3a';
-  const tokenOut = '0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209';
+  const tokenIn = '0x553D8A5927FBA1c3eC05DdA667D6Cda3F5543d3a'.toLowerCase();
+  const tokenOut = '0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209'.toLowerCase();
   const swapType = SwapTypes.SwapExactIn;
   const amount = parseFixed('0.5', 12);
   // Currently Relayer only suitable for ExactIn and non-eth swaps
@@ -134,7 +140,7 @@ async function swapExample() {
   const balancer = new BalancerSDK({
     network,
     rpcUrl,
-    
+
     
   });
   

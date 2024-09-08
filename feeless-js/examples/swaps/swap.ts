@@ -7,8 +7,9 @@
 import { BalancerSDK, Network } from '@feeless/sdk';
 import { formatFixed } from '@ethersproject/bignumber';
 
-const tokenIn = "0x553D8A5927FBA1c3eC05DdA667D6Cda3F5543d3a"; // wBTC
-const tokenOut = '0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209'; // wETH
+
+const tokenIn = '0x553D8A5927FBA1c3eC05DdA667D6Cda3F5543d3a'.toLowerCase();
+  const tokenOut = '0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209'.toLowerCase();
 
 const amount = String(BigInt(1e12)); // 1 wBTC
 
@@ -25,6 +26,7 @@ async function swap() {
 
 
   const signer = sdk.provider.getSigner();
+  
   const account = await signer.getAddress();
 
   // Finding a trading route rely on on-chain data.

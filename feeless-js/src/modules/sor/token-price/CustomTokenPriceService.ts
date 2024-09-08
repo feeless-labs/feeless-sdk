@@ -8,10 +8,12 @@ export class CustomTokenPriceProvider implements TokenPriceService {
   }
 
   async getNativeAssetPriceInToken(tokenAddress: string): Promise<string> {
-    const tokenPrice = this.tokenPrices.get(tokenAddress.toLowerCase());
+   
+   
+    const tokenPrice = this.tokenPrices.get(tokenAddress);
 
     if (tokenPrice === undefined) {
-      throw new Error('Token Price not found in the provided map');
+      throw new Error('Token Price not found in the provided map...');
     }
 
     const nativeAssetPrice = this.tokenPrices.get(
@@ -23,10 +25,15 @@ export class CustomTokenPriceProvider implements TokenPriceService {
     }
 
     // Multiply by scaling factor to simulate decimals, then divide
-    const tokenPriceInNativeAsset = (tokenPrice ) / nativeAssetPrice;
+    const tokenPriceInNativeAsset = ((tokenPrice ) / nativeAssetPrice).toString();
 
     // Convert the result to a floating-point string with 18 decimals
-    return tokenPriceInNativeAsset.toString;
+
+
+    console.debug("token price:" + tokenPrice);
+    console.debug("native asset price:" + nativeAssetPrice);
+    console.debug("price in wIOTA:" + tokenPriceInNativeAsset);
+    return Promise.resolve(tokenPriceInNativeAsset);
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@feeless/sdk",
-  "version": "1.1.6-beta.24.6-no-api",
+  "version": "1.1.6-beta.24.6-no-api-demo-5",
   "description": "JavaScript SDK for interacting with the Feeless AMM",
   "license": "GPL-3.0-only",
   "homepage": "https://github.com/feeless-labs/feeless-sdk#readme",

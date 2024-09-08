@@ -219,7 +219,7 @@ export class PoolApr {
   }
 
   /**
-   * Calculates staking rewards based on veBal gauges deployed with Curve Finance contracts.
+   * Calculates staking rewards based on veFLS gauges deployed with Curve Finance contracts.
    * https://curve.readthedocs.io/dao-gauges.html
    *
    * Terminology:
@@ -230,7 +230,7 @@ export class PoolApr {
    *  - gauge relative weight - weight of this gauge in bal inflation distribution [0..1] scaled to 1e18
    *
    * APR sources:
-   *  - gauge BAL emissions = min: 40% of totalSupply, max: 40% of totalSupply + 60% of totalSupply * gauge LPs voting power
+   *  - gauge wFLS emissions = min: 40% of totalSupply, max: 40% of totalSupply + 60% of totalSupply * gauge LPs voting power
    *    https://github.com/balancer-labs/balancer-v2-monorepo/blob/master/pkg/liquidity-mining/contracts/gauges/ethereum/LiquidityGaugeV5.vy#L338
    *  - gauge reward tokens: Admin or designated depositor has an option to deposit additional reward with a weekly accruing cadence.
    *    https://github.com/balancer-labs/balancer-v2-monorepo/blob/master/pkg/liquidity-mining/contracts/gauges/ethereum/LiquidityGaugeV5.vy#L641
@@ -268,7 +268,7 @@ export class PoolApr {
     ]);
 
     if (!balPrice?.usd) {
-      throw 'Missing BAL price';
+      throw 'Missing wFLS price';
     }
 
     const gaugeSupply = (gauge.workingSupply + 0.4) / 0.4; // Only 40% of LP token staked accrue emissions, totalSupply = workingSupply * 2.5
@@ -386,13 +386,14 @@ export class PoolApr {
    * @returns accrued protocol revenue as APR [bsp]
    */
   async protocolApr(pool: Pool): Promise<number> {
-    const veBalPoolId =
+    const veFLSPoolId =
       '0x0c3861100485c118f63e50d615e75dad491e19c200020000000000000000000a';
 
-    if (pool.id != veBalPoolId || !this.feeDistributor) {
+    if (pool.id != veFLSPoolId || !this.feeDistributor) {
       return 0;
     }
 
+    console.debug(JSON.stringify(this.tokenPrices));
     const revenue = new ProtocolRevenue(this.feeDistributor, this.tokenPrices);
 
     const { lastWeekBalRevenue, veBalSupply } =
@@ -400,7 +401,7 @@ export class PoolApr {
 
     const bptPrice = await this.bptPrice(pool);
     if (!bptPrice) {
-      throw 'bptPrice for veBal pool missing';
+      throw 'bptPrice for veFLS pool missing';
     }
 
     const dailyRevenue = (lastWeekBalRevenue ) / 7;

@@ -74,9 +74,9 @@ export class FeeDistributorRepository implements BaseFeeDistributor {
     const [, res] = await this.multicall.callStatic.aggregate(payload);
 
     const data = {
-      balAmount: parseFloat(formatUnits(res[0], 18)),
+      balAmount: parseFloat(formatUnits(res[0], 12)),
      
-      veBalSupply: parseFloat(formatUnits(res[2], 18)),
+      veBalSupply: parseFloat(formatUnits(res[1], 12)),
       // bbAUsdPrice: parseFloat(formatUnits(res[3], 18)),
     
       balAddress: this.balAddress,

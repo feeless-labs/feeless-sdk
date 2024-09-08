@@ -110,15 +110,16 @@ export class Sor extends SOR {
     else if(sorConfig.tokenPriceService === 'static')
     {
       const tokenPrices = new Map<string, bigint>([
-        ['0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209', BigInt(150000000000)],   // wIOTA
-        ['0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209', BigInt(20000000000000)],   // wFLS
-        ['0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209', BigInt(2500000000000000)],   // WETH
-        ['0x553D8A5927FBA1c3eC05DdA667D6Cda3F5543d3a', BigInt(55000000000000000)],  // wBTC
-        ['0xB62fe3ed61fa7BA0fc8B8917bd926E1f6EE3eC37', BigInt(10000000000000)],     // veFLS
-        ['0xc4FA42632fea08274ACDB5c0d9331285C01717Ba', BigInt(1000000000000)],      // FUSDC
-        ['0xCa2DBF6Ba5f3252Fd758C113A8c48D6D77406CaC', BigInt(1000000000000)],      // FUSDT
-        ['0x68EA743120BaCf2C277910700116Eb4b1C0643AA', BigInt(1000000000000)]       // wDai
+        ['0xB2E0DfC4820cc55829C71529598530E177968613'.toLowerCase(), BigInt(150000000000)],   // wIOTA
+        ['0x1D148Eb4C213e560a6bad71536b96AC5D6F1cDE3'.toLowerCase(), BigInt(20000000000000)],   // wFLS
+        ['0xd8058dA2dF3FBaBC03Ad8Ca51cAB4AAa3614B209'.toLowerCase(), BigInt(2500000000000000)],   // WETH
+        ['0x553D8A5927FBA1c3eC05DdA667D6Cda3F5543d3a'.toLowerCase(), BigInt(55000000000000000)],  // wBTC
+        ['0xB62fe3ed61fa7BA0fc8B8917bd926E1f6EE3eC37'.toLowerCase(), BigInt(10000000000000)],     // veFLS
+        ['0xc4FA42632fea08274ACDB5c0d9331285C01717Ba'.toLowerCase(), BigInt(1000000000000)],      // FUSDC
+        ['0xCa2DBF6Ba5f3252Fd758C113A8c48D6D77406CaC'.toLowerCase(), BigInt(1000000000000)],      // FUSDT
+        ['0x68EA743120BaCf2C277910700116Eb4b1C0643AA'.toLowerCase(), BigInt(1000000000000)]       // wDai
       ]);
+      
       return new CustomTokenPriceProvider(tokenPrices);
     }
     return new ApiTokenPriceService(network.chainId);

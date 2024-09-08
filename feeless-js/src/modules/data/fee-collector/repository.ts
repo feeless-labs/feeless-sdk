@@ -33,7 +33,7 @@ export class FeeCollectorRepository implements Findable<number> {
     );
     const fees = (await collector.getSwapFeePercentage()) as string;
 
-    return parseFloat(formatUnits(fees, 18));
+    return parseFloat(formatUnits(fees, 12));
   }
 
   async find(): Promise<number> {

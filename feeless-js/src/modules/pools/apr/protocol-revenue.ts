@@ -14,10 +14,10 @@ export class ProtocolRevenue {
 
   async data(now = Date.now()): Promise<ProtocolRevenueData> {
     const data = await this.repository.multicallData(now);
-    const balPrice = await this.tokenPrices.find(data.balAddress);
-
+    const balPrice = await this.tokenPrices.find(data.balAddress.toLowerCase());
+    
     if (!balPrice || !balPrice.usd) {
-      throw `No BAL USD price found`;
+      throw `No wFLS USD price found`;
     }
 
     return {
